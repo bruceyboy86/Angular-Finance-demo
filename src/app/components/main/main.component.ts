@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from 'src/app/services/http.service';
-import { IProfile } from 'src/app/modals/modals';
+import { IProfile, ICandles } from 'src/app/modals/modals';
 
 @Component({
   selector: 'app-main',
@@ -10,6 +10,7 @@ import { IProfile } from 'src/app/modals/modals';
 export class MainComponent implements OnInit {
   constructor(private http: HttpService) {}
   profile!: IProfile;
+  candles!: ICandles;
 
   // this will be used for an asynchronus call
   profile$ = this.http.getProfileAsync('AMZN');
@@ -17,6 +18,9 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
     this.http.getProfile('AMZN').subscribe((res) => {
       this.profile = res;
+    });
+    this.http.getCandles('AMZN').subscribe((res) => {
+      this.candles = res;
     });
   }
 }

@@ -12,3 +12,13 @@ export interface IProfile {
   ticker: string;
   weburl: string;
 }
+
+export interface ICandles {
+  c: number[];
+  h: number[];
+  l: number[];
+  o: number[];
+  s: string;
+  t: number[];
+  v: number[];
+}
