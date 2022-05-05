@@ -1,0 +1,8 @@
+<p>main works!</p>
+<p>observable</p>
+{{ profile | json }}
+
+<ng-container *ngIf="profile$ | async as profile">
+  <p>inside container</p>
+  {{ profile.weburl }}
+</ng-container>
