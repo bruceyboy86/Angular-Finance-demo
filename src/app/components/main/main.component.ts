@@ -11,6 +11,7 @@ export class MainComponent implements OnInit {
   constructor(private http: HttpService) {}
   profile!: IProfile;
   candles!: ICandles;
+  news: any;
 
   // this will be used for an asynchronus call
   profile$ = this.http.getProfileAsync('AMZN');
@@ -21,6 +22,9 @@ export class MainComponent implements OnInit {
     });
     this.http.getCandles('AMZN').subscribe((res) => {
       this.candles = res;
+    });
+    this.http.getCompanyNews('AMZN').subscribe((res) => {
+      this.news = res;
     });
   }
 }

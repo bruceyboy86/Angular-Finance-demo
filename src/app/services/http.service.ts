@@ -29,4 +29,12 @@ export class HttpService {
         `&resolution=60&from=1651187922&to=1651787922&token=${env.TOKEN}`
     );
   }
+
+  getCompanyNews(company: string): Observable<ICandles> {
+    return this.http.get<ICandles>(
+      `${env.BASE_URL}company-news?symbol=` +
+        company +
+        `&from=2022-04-07&to=2022-05-07&token=${env.TOKEN}`
+    );
+  }
 }
