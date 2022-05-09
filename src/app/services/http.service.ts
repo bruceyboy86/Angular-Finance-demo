@@ -30,11 +30,17 @@ export class HttpService {
     );
   }
 
-  getCompanyNews(company: string): Observable<ICandles> {
-    return this.http.get<ICandles>(
+  getCompanyNews(company: string): Observable<any> {
+    return this.http.get<any>(
       `${env.BASE_URL}company-news?symbol=` +
         company +
         `&from=2022-04-07&to=2022-05-07&token=${env.TOKEN}`
+    );
+  }
+
+  getQuote(company: string): Observable<any> {
+    return this.http.get<any>(
+      `${env.BASE_URL}quote?symbol=` + company + `&token=${env.TOKEN}`
     );
   }
 }

@@ -12,6 +12,7 @@ export class MainComponent implements OnInit {
   profile!: IProfile;
   candles!: ICandles;
   news: any;
+  quote: any;
 
   // this will be used for an asynchronus call
   profile$ = this.http.getProfileAsync('AMZN');
@@ -25,6 +26,9 @@ export class MainComponent implements OnInit {
     });
     this.http.getCompanyNews('AMZN').subscribe((res) => {
       this.news = res;
+    });
+    this.http.getQuote('AMZN').subscribe((res) => {
+      this.quote = res;
     });
   }
 }
