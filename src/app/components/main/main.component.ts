@@ -18,17 +18,22 @@ export class MainComponent implements OnInit {
   profile$ = this.http.getProfileAsync('AMZN');
 
   ngOnInit(): void {
-    this.http.getProfile('AMZN').subscribe((res) => {
-      this.profile = res;
-    });
+    // observable profile
+    // this.http.getProfile('AMZN').subscribe((res) => {
+    //   this.profile = res;
+    // });
+    // async profile
+    // this.http.getProfile('AMZN').subscribe((res) => {
+    //   this.profile = res;
+    // });
     this.http.getCandles('AMZN').subscribe((res) => {
       this.candles = res;
     });
     this.http.getCompanyNews('AMZN').subscribe((res) => {
       this.news = res;
     });
-    this.http.getQuote('AMZN').subscribe((res) => {
-      this.quote = res;
-    });
+    // this.http.getQuote('AMZN').subscribe((res) => {
+    //   this.quote = res;
+    // });
   }
 }

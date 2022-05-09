@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment as env } from 'src/environments/environment';
-import { IProfile, ICandles } from 'src/app/modals/modals';
+import { IProfile, ICandles, IQuote } from 'src/app/modals/modals';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -9,6 +9,8 @@ import { Observable } from 'rxjs';
 })
 export class HttpService {
   constructor(private http: HttpClient) {}
+
+  
 
   getProfile(company: string): Observable<IProfile> {
     return this.http.get<IProfile>(
@@ -38,8 +40,8 @@ export class HttpService {
     );
   }
 
-  getQuote(company: string): Observable<any> {
-    return this.http.get<any>(
+  getQuote(company: string): Observable<IQuote> {
+    return this.http.get<IQuote>(
       `${env.BASE_URL}quote?symbol=` + company + `&token=${env.TOKEN}`
     );
   }
