@@ -26,9 +26,9 @@ export class MainComponent implements OnInit {
     // this.http.getProfile('AMZN').subscribe((res) => {
     //   this.profile = res;
     // });
-    this.http.getCandles('AMZN').subscribe((res) => {
-      this.candles = res;
-    });
+    // this.http.getCandles('AMZN').subscribe((res) => {
+    //   this.candles = res;
+    // });
     this.http.getCompanyNews('AMZN').subscribe((res) => {
       this.news = res;
     });
