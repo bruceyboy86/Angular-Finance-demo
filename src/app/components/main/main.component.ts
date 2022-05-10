@@ -17,6 +17,8 @@ export class MainComponent implements OnInit {
   // this will be used for an asynchronus call
   profile$ = this.http.getProfileAsync('AMZN');
 
+  // TODO unsubscribe
+
   ngOnInit(): void {
     // observable profile
     // this.http.getProfile('AMZN').subscribe((res) => {
