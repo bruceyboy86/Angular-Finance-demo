@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from 'src/app/services/http.service';
 import { ICandles } from 'src/app/modals/modals';
 import * as Highcharts from 'highcharts';
-import { zip } from 'rxjs';
+import { of, zip } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-candles',
@@ -44,9 +45,27 @@ export class CandlesComponent implements OnInit {
       // res.map((r: any) =>
       // );
       // https://underscorejs.org/#zip
+      // https://rxjs.dev/api/index/function/zip
 
       this.candles = res;
+      this.mapResultForChart();
     });
     Highcharts.chart('container', this.options);
+  }
+  mapResultForChart(): void {
+    if (!!this.candles) {
+      zip(
+        of(this.candles.c),
+        of(this.candles.h),
+        of(this.candles.l),
+        of(this.candles.o),
+        of(this.candles.t),
+        of(this.candles.v)
+      )
+        .pipe(map(([c, h, l, o, t, v]) => [c, h, l, o, t, v]))
+        .subscribe((result) => console.log(result));
+    } else {
+      return;
+    }
   }
 }

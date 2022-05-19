@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment as env } from 'src/environments/environment';
-import { IProfile, ICandles, IQuote } from 'src/app/modals/modals';
+import { IProfile, ICandles, IQuote, INews } from 'src/app/modals/modals';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -22,16 +22,16 @@ export class HttpService {
     );
   }
 
-  getCandles(company: string): Observable<any> {
-    return this.http.get<any>(
+  getCandles(company: string): Observable<ICandles> {
+    return this.http.get<ICandles>(
       `${env.BASE_URL}stock/candle?symbol=` +
         company +
         `&resolution=60&from=1651187922&to=1651787922&token=${env.TOKEN}`
     );
   }
 
-  getCompanyNews(company: string): Observable<any> {
-    return this.http.get<any>(
+  getCompanyNews(company: string): Observable<INews> {
+    return this.http.get<INews>(
       `${env.BASE_URL}company-news?symbol=` +
         company +
         `&from=2022-04-07&to=2022-05-07&token=${env.TOKEN}`
