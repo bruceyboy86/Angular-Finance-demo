@@ -13,28 +13,25 @@ import { map } from 'rxjs/operators';
 export class CandlesComponent implements OnInit {
   constructor(private http: HttpService) {}
   candles!: any;
+  chartDataCandles: any[] = [];
 
   public options: any = {
-    chart: {},
+    // chart: {},
     title: {
       text: 'Sample Scatter Plot',
     },
     credits: {
       enabled: false,
     },
-    xAxis: {
-      type: 'datetime',
-      labels: {},
-    },
+    // xAxis: {
+    //   type: 'datetime',
+    //   labels: {},
+    // },
     series: [
       {
-        name: 'Normal',
-        // data: [[new Date('2018-01-25 18:38:31').getTime(), 2]],
-        // data: [this.candles.c],
-      },
-      {
-        name: 'Abnormal',
-        data: [[new Date('2018-02-05 18:38:31').getTime(), 7]],
+        type: 'candlestick',
+        name: 'company name here',
+        data: this.chartDataCandles,
       },
     ],
   };
@@ -50,13 +47,12 @@ export class CandlesComponent implements OnInit {
       this.candles = res;
       this.mapResultForChart();
     });
-    Highcharts.chart('container', this.options);
+    // Highcharts.chart('container', this.options);
   }
-  chartDataCandles: any[] = [];
   mapResultForChart(): void {
     if (!!this.candles) {
       // make fresh arrays capable of rendering on highcharts stock candles chart
-      this.candles.c.map((candle:, i: string | number) =>
+      this.candles.c.map((candle: number, i: string | number) =>
         this.chartDataCandles.push([
           this.candles.t[i] * 1000,
           this.candles.o[i],
@@ -66,6 +62,7 @@ export class CandlesComponent implements OnInit {
         ])
       );
       console.log(this.chartDataCandles);
+      Highcharts.chart('container', this.options);
       // for (let i = 0; i < this.candles.c.length; i++) {
 
       // }
