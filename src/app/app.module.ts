@@ -7,9 +7,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './components/profile/profile.component';
 import { QuoteComponent } from './components/quote/quote.component';
 import { CandlesComponent } from './components/candles/candles.component';
+import { NewsComponent } from './components/news/news.component';
 
 @NgModule({
-  declarations: [AppComponent, MainComponent, ProfileComponent, QuoteComponent, CandlesComponent],
+  declarations: [AppComponent, MainComponent, ProfileComponent, QuoteComponent, CandlesComponent, NewsComponent],
   imports: [BrowserModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],

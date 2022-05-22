@@ -52,18 +52,33 @@ export class CandlesComponent implements OnInit {
     });
     Highcharts.chart('container', this.options);
   }
+  chartDataCandles: any[] = [];
   mapResultForChart(): void {
     if (!!this.candles) {
-      zip(
-        of(this.candles.c),
-        of(this.candles.h),
-        of(this.candles.l),
-        of(this.candles.o),
-        of(this.candles.t),
-        of(this.candles.v)
-      )
-        .pipe(map(([c, h, l, o, t, v]) => [c, h, l, o, t, v]))
-        .subscribe((result) => console.log(result));
+      // make fresh arrays capable of rendering on highcharts stock candles chart
+      this.candles.c.map((candle:, i: string | number) =>
+        this.chartDataCandles.push([
+          this.candles.t[i] * 1000,
+          this.candles.o[i],
+          this.candles.h[i],
+          this.candles.l[i],
+          candle,
+        ])
+      );
+      console.log(this.chartDataCandles);
+      // for (let i = 0; i < this.candles.c.length; i++) {
+
+      // }
+      // zip(
+      //   of(this.candles.c[0]),
+      //   of(this.candles.h[0]),
+      //   of(this.candles.l[0]),
+      //   of(this.candles.o[0]),
+      //   of(this.candles.t[0]),
+      //   of(this.candles.v[0])
+      // )
+      //   .pipe(map(([c, h, l, o, t, v]) => [c, h, l, o, t, v]))
+      //   .subscribe((result) => console.log(result));
     } else {
       return;
     }
