@@ -26,7 +26,7 @@ export class HttpService {
     return this.http.get<ICandles>(
       `${env.BASE_URL}stock/candle?symbol=` +
         company +
-        `&resolution=60&from=1651187922&to=1651787922&token=${env.TOKEN}`
+        `&resolution=60&from=1651944240&to=1653344593&token=${env.TOKEN}`
     );
   }
 

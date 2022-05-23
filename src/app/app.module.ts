@@ -10,7 +10,14 @@ import { CandlesComponent } from './components/candles/candles.component';
 import { NewsComponent } from './components/news/news.component';
 
 @NgModule({
-  declarations: [AppComponent, MainComponent, ProfileComponent, QuoteComponent, CandlesComponent, NewsComponent],
+  declarations: [
+    AppComponent,
+    MainComponent,
+    ProfileComponent,
+    QuoteComponent,
+    CandlesComponent,
+    NewsComponent,
+  ],
   imports: [BrowserModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],

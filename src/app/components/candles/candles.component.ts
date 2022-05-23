@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from 'src/app/services/http.service';
 import { ICandles } from 'src/app/modals/modals';
-import * as Highcharts from 'highcharts';
-import { of, zip } from 'rxjs';
-import { map } from 'rxjs/operators';
+import * as Highcharts from 'highcharts/highstock';
 
 @Component({
   selector: 'app-candles',
@@ -23,10 +21,10 @@ export class CandlesComponent implements OnInit {
     credits: {
       enabled: false,
     },
-    // xAxis: {
-    //   type: 'datetime',
-    //   labels: {},
-    // },
+    xAxis: {
+      type: 'datetime',
+      labels: {},
+    },
     series: [
       {
         type: 'candlestick',
@@ -38,16 +36,9 @@ export class CandlesComponent implements OnInit {
 
   ngOnInit(): void {
     this.http.getCandles('AMZN').subscribe((res) => {
-      // this.candles = zip(res.c, res.t, [res.l]);
-      // res.map((r: any) =>
-      // );
-      // https://underscorejs.org/#zip
-      // https://rxjs.dev/api/index/function/zip
-
       this.candles = res;
       this.mapResultForChart();
     });
-    // Highcharts.chart('container', this.options);
   }
   mapResultForChart(): void {
     if (!!this.candles) {
@@ -63,19 +54,6 @@ export class CandlesComponent implements OnInit {
       );
       console.log(this.chartDataCandles);
       Highcharts.chart('container', this.options);
-      // for (let i = 0; i < this.candles.c.length; i++) {
-
-      // }
-      // zip(
-      //   of(this.candles.c[0]),
-      //   of(this.candles.h[0]),
-      //   of(this.candles.l[0]),
-      //   of(this.candles.o[0]),
-      //   of(this.candles.t[0]),
-      //   of(this.candles.v[0])
-      // )
-      //   .pipe(map(([c, h, l, o, t, v]) => [c, h, l, o, t, v]))
-      //   .subscribe((result) => console.log(result));
     } else {
       return;
     }
