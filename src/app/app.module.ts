@@ -8,6 +8,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { QuoteComponent } from './components/quote/quote.component';
 import { CandlesComponent } from './components/candles/candles.component';
 import { NewsComponent } from './components/news/news.component';
+import { FilterComponent } from './components/filter/filter.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { NewsComponent } from './components/news/news.component';
     QuoteComponent,
     CandlesComponent,
     NewsComponent,
+    FilterComponent,
   ],
   imports: [BrowserModule, HttpClientModule],
   providers: [],

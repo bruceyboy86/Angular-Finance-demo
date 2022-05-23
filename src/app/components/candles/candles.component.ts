@@ -52,7 +52,6 @@ export class CandlesComponent implements OnInit {
           candle,
         ])
       );
-      console.log(this.chartDataCandles);
       Highcharts.chart('container', this.options);
     } else {
       return;
