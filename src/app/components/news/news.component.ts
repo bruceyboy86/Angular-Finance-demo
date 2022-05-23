@@ -15,7 +15,7 @@ export class NewsComponent implements OnInit {
     this.http.getCompanyNews('AMZN').subscribe((res) => {
       this.news = res;
       console.log(this.news);
-      // let itterator = re.entries() 
+      // let itterator = res.entries() 
       // itterator.next().value[1].headline 
     });
   }
