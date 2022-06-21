@@ -1,16 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpService } from 'src/app/services/http.service';
 import { ProfileComponent } from './profile.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-describe('ProfileComponent', () => {
+fdescribe('ProfileComponent', () => {
   let component: ProfileComponent;
   let fixture: ComponentFixture<ProfileComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProfileComponent ]
-    })
-    .compileComponents();
+      declarations: [ProfileComponent],
+      imports: [HttpClientTestingModule],
+      providers: [HttpService],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -20,6 +22,7 @@ describe('ProfileComponent', () => {
   });
 
   it('should create', () => {
+    const service: HttpService = TestBed.get(HttpService);
     expect(component).toBeTruthy();
   });
 });
